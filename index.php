@@ -1,11 +1,11 @@
-<?php
-session_start();
-if (!isset($_SESSION['id_pengguna']) || $_SESSION['level'] != 1) {
-    header("Location: index.php");
-    exit;
-}
-echo "Selamat datang User!";
-?>
+<!-- <?php
+// session_start();
+// if (!isset($_SESSION['id_pengguna']) || $_SESSION['level'] != 1) {
+//     header("Location: admin/login.php");
+//     exit;
+// }
+// echo "Selamat datang User!";
+?> -->
 
 <!DOCTYPE html>
 <html lang="id">
