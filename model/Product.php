@@ -22,15 +22,41 @@ class Product extends koneksi {
         return $data;
     }
 
-    public function addProduct($data){
-        $name = $this->conn->real_escape_string($data['name']);
-        $category = $this->conn->real_escape_string($data['category']);
-        $price = $this->conn->real_escape_string($data['price']);
-        $description = $this->conn->real_escape_string($data['description']);
-        $image = $this->conn->real_escape_string($data['image']);
-
-        $sql = "INSERT INTO products (name, category, price, description, image) VALUES ('$name', '$category', '$price', '$description', '$image')";
-        return $this->conn->query($sql);
+    public function getByCategory($category) {
+        $stmt = $this->conn->prepare("SELECT * FROM products WHERE category = ?");
+        $stmt->bind_param("s", $category);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
+    
+    public function getById($id) {
+        $stmt = $this->conn->prepare("SELECT * FROM products WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_assoc();
+    }
+    
+    public function insert($data) {
+        $stmt = $this->conn->prepare("INSERT INTO products (name, category, price, image) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssis", $data['name'], $data['category'], $data['price'], $data['image']);
+        return $stmt->execute();
+    }
+    
+    public function update($id, $data) {
+        $stmt = $this->conn->prepare("UPDATE products SET name=?, category=?, price=?, image=? WHERE id=?");
+        $stmt->bind_param("ssisi", $data['name'], $data['category'], $data['price'], $data['image'], $id);
+        return $stmt->execute();
+    }
+    
+    public function delete($id) {
+        $stmt = $this->conn->prepare("DELETE FROM products WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        return $stmt->execute();
+    }
+    
+
+   
+
+
 }
 ?>

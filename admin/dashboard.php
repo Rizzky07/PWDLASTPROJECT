@@ -174,11 +174,14 @@ nav.navbar {
     <div id="sidebar-wrapper">
       <div class="sidebar-heading">Gramedia</div>
       <div class="list-group">
-        <a href="dashboard.php" class="active"><i class="fa-solid fa-house"></i>Dashboard</a>
-        <a href="dashboard.php?module=produk&page=daftar-produk"><i class="fas fa-info-circle"></i> Produk</a>
-        <a href="dashboard.php?module=artikel&page=daftar-artikel"><i class="fas fa-box-open"></i> Artikel</a>
-        <a href="dashboard.php?module=about&page=daftar-about"><i class="fas fa-shopping-cart"></i> Keranjang</a>
-      </div>
+  <a href="dashboard.php" class="active"><i class="fa-solid fa-house"></i> Dashboard</a>
+  <a href="dashboard.php?module=produk&page=daftar-produk"><i class="fas fa-box"></i> Produk</a>
+  <a href="dashboard.php?module=artikel&page=daftar-artikel"><i class="fas fa-newspaper"></i> Artikel</a>
+  <a href="dashboard.php?module=layanan&page=daftar-layanan"><i class="fas fa-concierge-bell"></i> Layanan</a>
+  <a href="dashboard.php?module=about&page=daftar-about"><i class="fas fa-info-circle"></i> About</a>
+  <a href="dashboard.php?module=kontak&page=daftar-kontak"><i class="fas fa-envelope"></i> Kontak</a>
+</div>
+
     </div>
 
     <!-- Page Content -->

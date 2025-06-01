@@ -1,12 +1,11 @@
 body {
-  font-family: "Segoe UI", sans-serif;
-  background-color: #f5f7fa;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
 }
 
 .dashboard-title {
-  font-size: 26px;
+  color: #333;
   margin-bottom: 20px;
-  color: #333333;
 }
 
 .dashboard-title i {
@@ -14,68 +13,70 @@ body {
 }
 
 .alert-box {
-  background-color: #d4eef4;
-  border: 1px solid #b3e0eb;
   padding: 15px;
-  margin-bottom: 30px;
-  border-radius: 5px;
+  background-color: #d4edda;
+  color: #155724;
+  border-radius: 4px;
+  margin-bottom: 20px;
   position: relative;
-  font-size: 16px;
-}
-
-.alert-box strong {
-  font-weight: bold;
 }
 
 .close-btn {
   position: absolute;
-  top: 10px;
   right: 15px;
-  font-size: 18px;
+  top: 15px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .dashboard-cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  flex-wrap: wrap;
 }
 
 .card {
-  flex: 1 1 30%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  color: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  min-width: 250px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
 }
 
-.card-info .card-title {
-  font-weight: bold;
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
   font-size: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-.card-info .card-count {
-  font-size: 24px;
+.card-count {
+  font-size: 28px;
   font-weight: bold;
 }
 
-.card-icon i {
-  font-size: 40px;
+.card-icon {
+  font-size: 50px;
+  opacity: 0.3;
 }
 
 .card-blue {
-  background-color: #007bff;
+  background: linear-gradient(135deg, #3498db, #2c3e50);
 }
 
 .card-yellow {
-  background-color: #ffc107;
+  background: linear-gradient(135deg, #f39c12, #e74c3c);
 }
 
 .card-green {
-  background-color: #28a745;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
 }
