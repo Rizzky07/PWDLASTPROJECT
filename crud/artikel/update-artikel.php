@@ -1,10 +1,23 @@
 <?php
-require_once('../model/Artikel.php');
+require_once('../../model/Artikel.php');
 $artikel = new Artikel();
 
-$id = $_GET['id'];
+// Validasi ID
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+    die("ID artikel tidak valid.");
+}
+
+$id = (int)$_GET['id'];
+
+// Ambil data artikel berdasarkan ID
 $data = $artikel->getById($id);
 
+// Cek apakah data artikel ditemukan
+if (!$data) {
+    die("Artikel tidak ditemukan.");
+}
+
+// Proses update saat form disubmit
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $updateData = [
         'tanggal' => $_POST['tanggal'],
@@ -13,12 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'deskripsi' => $_POST['deskripsi'],
         'posting' => isset($_POST['posting']) ? 1 : 0
     ];
-    
+
+    // Jalankan update
     $artikel->update($id, $updateData);
-    header("Location: daftar-artikel.php");
+
+    // Redirect setelah berhasil update
+    header("Location: ../../admin/dashboard.php?module=artikel&page=daftar-artikel");
     exit;
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">

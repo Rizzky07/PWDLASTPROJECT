@@ -84,7 +84,7 @@
   $produk = new Product();
 
   // Ambil data produk dengan kategori 'Komik'
-  $dataKomik = $produk->getByCategory('Komik');
+  $dataKomik = $produk->getByCategory(3);
   ?>
 
   <div class="card-grid">

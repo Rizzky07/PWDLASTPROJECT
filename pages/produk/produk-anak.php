@@ -84,26 +84,26 @@
   $produk = new Product();
 
   // Ambil data produk dengan kategori 'Buku Anak dan Remaja'
-  $dataAnak = $produk->getByCategory('Buku Anak dan Remaja');
+  $dataAnak = $produk->getByCategory(4);
   ?>
 
-  <div class="card-grid">
-    <?php foreach($dataAnak as $row): ?>
-      <div class="card">
-        <div class="card-image-container">
-          <img class="card-image" src="../img/<?= htmlspecialchars($row['image']); ?>" alt="<?= htmlspecialchars($row['name']); ?>" />
-        </div>
+<div class="card-grid">
+  <?php foreach($dataAnak as $row): ?>
+    <div class="card">
+      <div class="card-image-container">
+        <img class="card-image" src="../img/<?= htmlspecialchars($row['image']); ?>" alt="<?= htmlspecialchars($row['name']); ?>" />
+      </div>
 
-        <div class="card-content">
-          <h3 class="card-title"><?= htmlspecialchars($row['name']); ?></h3>
-          <p class="card-description"><?= htmlspecialchars($row['category']); ?></p>
-          <div class="card-tags">
-            <span class="tag">Rp <?= number_format($row['price'], 0, ',', '.'); ?></span>
-          </div>
+      <div class="card-content">
+        <h3 class="card-title"><?= htmlspecialchars($row['name']); ?></h3>
+        <p class="card-description"><?= htmlspecialchars($row['nama_kategori'] ?? ''); ?></p>
+        <div class="card-tags">
+          <span class="tag">Rp <?= number_format($row['price'], 0, ',', '.'); ?></span>
         </div>
       </div>
-    <?php endforeach; ?>
-  </div>
+    </div>
+  <?php endforeach; ?>
+</div>
 
 </body>
 </html>

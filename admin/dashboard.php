@@ -176,8 +176,12 @@ nav.navbar {
       <div class="list-group">
   <a href="dashboard.php" class="active"><i class="fa-solid fa-house"></i> Dashboard</a>
   <a href="dashboard.php?module=produk&page=daftar-produk"><i class="fas fa-box"></i> Produk</a>
+  <a href="dashboard.php?module=kategori&page=daftar-kategori"><i class="fas fa-kategori"></i> Kategori</a>
   <a href="dashboard.php?module=artikel&page=daftar-artikel"><i class="fas fa-newspaper"></i> Artikel</a>
+  <a href="dashboard.php?module=promo&page=daftar-promo"><i class="fas fa-newspaper"></i> Promo</a>
   <a href="dashboard.php?module=layanan&page=daftar-layanan"><i class="fas fa-concierge-bell"></i> Layanan</a>
+  <!-- <a href="dashboard.php?module=pesanan&page=daftar-pesanan"><i class="fas fa-pesanan"></i> Pesanan</a> -->
+  <a href="dashboard.php?module=toko&page=daftar-toko"><i class="fas fa-toko"></i> Toko</a>
   <a href="dashboard.php?module=about&page=daftar-about"><i class="fas fa-info-circle"></i> About</a>
   <a href="dashboard.php?module=kontak&page=daftar-kontak"><i class="fas fa-envelope"></i> Kontak</a>
 </div>

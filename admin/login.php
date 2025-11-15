@@ -163,7 +163,7 @@
   <body>
     <div class="wrapper">
       <div class="login-card">
-        <h3><i class="fas fa-user-lock"></i> Admin Login</h3>
+        <h3><i class="fas fa-user-lock"></i>Login</h3>
         <form id="loginForm" method="post" action="proses-login.php">
           <label for="email">Email</label>
           <input id="email" name="email" type="email" placeholder="Masukan Email" required>

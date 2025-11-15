@@ -1,16 +1,22 @@
 <?php
 require_once('../../model/Product.php');
+require_once('../../model/Kategori.php');
+
 $product = new Product();
+$kategoriModel = new Kategori();
+
 $id = $_GET['id'];
 $data = $product->getById($id);
+$kategoriList = $kategoriModel->getAll();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $updateData = [
         'name' => $_POST['name'],
-        'category' => $_POST['category'],
+        'id_kategori' => $_POST['category'], // ✅ Sesuai dengan field di database
         'price' => $_POST['price'],
+        'stock' => $_POST['stock'],
         'image' => !empty($_FILES['image']['name']) ? $_FILES['image']['name'] : $data['image'],
-        'description' => $_POST['description'] ?? '' // Tambahkan ini jika ingin menyimpan deskripsi
+        'description' => $_POST['description'] ?? ''
     ];
 
     if (!empty($_FILES['image']['name'])) {
@@ -18,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $product->update($id, $updateData);
-    header("Location: ../../admin/page/produk/daftar-produk.php");
+    header("Location: ../../admin/dashboard.php?module=produk&page=daftar-produk");
     exit;
 }
 ?>
@@ -27,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Tambah Produk</title>
+    <title>Update Produk</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,11 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             color: #333;
             margin-bottom: 10px;
         }
-        h2 {
-            color: #333;
-            margin: 20px 0 10px 0;
-            font-size: 1.2em;
-        }
         .form-group {
             margin-bottom: 20px;
         }
@@ -54,7 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         input[type="text"],
         input[type="number"],
-        textarea {
+        textarea,
+        select {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
@@ -67,10 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         .file-input {
             margin-top: 5px;
-        }
-        .divider {
-            border-top: 1px solid #eee;
-            margin: 20px 0;
         }
         .submit-btn {
             background-color: #4CAF50;
@@ -92,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </style>
 </head>
 <body>
-    <h1>Update Buku</h1>
+    <h1>Update Produk</h1>
 
     <form method="post" enctype="multipart/form-data">
         <div class="form-group">
@@ -100,16 +98,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="text" id="name" name="name" value="<?= htmlspecialchars($data['name']); ?>" required>
         </div>
 
-        <div class="divider"></div>
-
-        <h2>Kategori</h2>
         <div class="form-group">
-            <input type="text" id="category" name="category" value="<?= htmlspecialchars($data['category']); ?>" required>
+            <label for="category">Kategori</label>
+            <select id="category" name="category" required>
+                <option value="">-- Pilih Kategori --</option>
+                <?php foreach ($kategoriList as $kategori): ?>
+                    <option value="<?= $kategori['id_kategori']; ?>" 
+                        <?= $data['id_kategori'] == $kategori['id_kategori'] ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($kategori['nama_kategori']); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
         </div>
 
         <div class="form-group">
             <label for="price">Harga</label>
             <input type="number" id="price" name="price" value="<?= htmlspecialchars($data['price']); ?>" required>
+        </div>
+
+        <div class="form-group">
+            <label for="stock">Stok Produk</label>
+            <input type="number" id="stock" name="stock" value="<?= htmlspecialchars($data['stock']); ?>" required>
         </div>
 
         <div class="form-group">
@@ -122,14 +131,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
 
-        <div class="divider"></div>
-
-        <h2>Deskripsi</h2>
         <div class="form-group">
-            <textarea id="description" name="description" placeholder="Tambahkan deskripsi untuk produk ini"><?= htmlspecialchars($data['description'] ?? ''); ?></textarea>
+            <label for="description">Deskripsi</label>
+            <textarea id="description" name="description"><?= htmlspecialchars($data['description'] ?? ''); ?></textarea>
         </div>
-
-        <div class="divider"></div>
 
         <button type="submit" class="submit-btn">Simpan Produk</button>
     </form>

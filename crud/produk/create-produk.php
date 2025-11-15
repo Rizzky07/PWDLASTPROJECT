@@ -1,18 +1,25 @@
 <?php
 require_once(__DIR__ . '/../../model/Product.php');
+require_once(__DIR__ . '/../../model/Kategori.php');
+
 $product = new Product();
+$kategoriModel = new Kategori();
+$kategoriList = $kategoriModel->getAll();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = [
         'name' => $_POST['name'],
-        'category' => $_POST['category'],
+        'category' => $_POST['id_kategori'],
         'price' => $_POST['price'],
-        'image' => $_FILES['image']['name']
+        'stock' => $_POST['stock'],
+        'image' => $_FILES['image']['name'],
+        'description' => $_POST['description'] ?? ''
     ];
 
     move_uploaded_file($_FILES['image']['tmp_name'], __DIR__ . '/../../img/' . $_FILES['image']['name']);
     $product->insert($data);
-    header("Location: ../../admin/page/produk/daftar-produk.php");
+
+    header("Location: ../../admin/dashboard.php?module=produk&page=daftar-produk");
     exit;
 }
 ?>
@@ -43,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         input[type="text"],
         input[type="number"],
-        select,
-        textarea {
+        textarea,
+        select {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
@@ -83,13 +90,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
 
         <div class="form-group">
-            <label for="category">Kategori</label>
-            <input type="text" id="category" name="category" required>
+            <label for="id_kategori">Kategori</label>
+            <select id="id_kategori" name="id_kategori" required>
+                <option value="">-- Pilih Kategori --</option>
+                <?php foreach ($kategoriList as $kategori): ?>
+                    <option value="<?= $kategori['id_kategori']; ?>">
+                        <?= htmlspecialchars($kategori['nama_kategori']); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
         </div>
 
         <div class="form-group">
             <label for="price">Harga</label>
             <input type="number" id="price" name="price" required>
+        </div>
+
+        <div class="form-group">
+            <label for="stock">Stok Produk</label>
+            <input type="number" id="stock" name="stock" required>
         </div>
 
         <div class="form-group">

@@ -109,7 +109,7 @@
   $produk = new Product();
 
   // Ambil data produk dengan kategori 'Teknologi dan Komputer'
-  $dataTeknologi = $produk->getByCategory('Teknologi dan Komputer');
+  $dataTeknologi = $produk->getByCategory(5);
   ?>
 
   <div class="card-grid">

@@ -1,5 +1,5 @@
 <?php
-require_once('../model/Artikel.php');
+require_once('../../model/Artikel.php');
 $artikel = new Artikel();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -11,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'posting' => isset($_POST['posting']) ? 1 : 0
     ];
     
-    $artikel->create($data);
-    header("Location: daftar-artikel.php");
+    $artikel->insert($data);
+    header("Location: ../../admin/dashboard.php?module=artikel&page=daftar-artikel");
     exit;
 }
 ?>
