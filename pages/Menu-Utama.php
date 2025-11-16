@@ -6,7 +6,7 @@
 // }
 // echo "Selamat datang User!";
 ?> -->
-<!-- 
+
 
 <!DOCTYPE html>
 <html lang="id">
@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloudify Mockup</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="asset/csspages/Menu-Utama.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -27,25 +27,29 @@
         </div>
     </header>
 
-    <div class="files-container">
-        <div class="file-card">
-            <div class="file-icon-container type-png">
-                <div class="icon-placeholder">
-                    <i class="fas fa-image"></i>
-                </div>
-            </div>
-            <div class="file-info">
+    <div class="file-card-wrapper">
+        <div class="file-card type-png">
+            <div class="file-header">
+                <span class="file-indicator">
+                    <i class="fas fa-image"></i> </span>
                 <span class="file-name">Example.png</span>
-                <i class="fas fa-ellipsis-v more-icon"></i>
+                <button class="more-options">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
             </div>
-            <div class="file-details">
+            
+            <div class="file-preview">
+                <i class="fas fa-image"></i> </div>
+
+            <div class="file-footer">
                 <span class="file-status">
-                    <i class="fas fa-eye"></i> You opened · Aug 16, 2024
+                    <i class="fas fa-user-tie"></i> You opened · Aug 16, 2024
                 </span>
             </div>
         </div>
+    </div>
         
-        </div>
+</div>
 
 </body>
 </html>

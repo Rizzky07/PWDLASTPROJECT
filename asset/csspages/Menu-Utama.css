@@ -1,0 +1,174 @@
+/* Pengaturan global */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: #f4f5f8; /* Warna latar belakang */
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Aplikasi */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.app-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+.header-icons button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  color: #555;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.header-icons button:hover {
+  background-color: #eee;
+}
+
+/* Container File - Menggunakan Grid */
+.files-container {
+  display: grid;
+  /* Membuat 4 kolom dengan lebar yang sama */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; /* Jarak antar kartu */
+  padding: 40px;
+}
+
+/* Kartu File */
+.file-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Bayangan lembut */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 180px; /* Tinggi kartu agar terlihat seragam */
+}
+
+.file-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Area Ikon File */
+.file-icon-container {
+  width: 100%;
+  height: 80px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-color: #f0f0f5; /* Latar belakang ikon default */
+}
+
+.icon-placeholder {
+  font-size: 48px;
+  color: white;
+}
+
+/* Detail Nama & Ikon Tambahan */
+.file-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.file-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.more-icon {
+  color: #999;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+/* Detail Status (Dibuka pada...) */
+.file-details {
+  width: 100%;
+  text-align: left;
+  margin-top: auto; /* Mendorong ke bagian bawah kartu */
+}
+
+.file-status {
+  font-size: 12px;
+  color: #888;
+}
+
+.file-status .fas {
+  margin-right: 5px;
+  color: #888;
+}
+
+/* --- Variasi Warna Ikon File (Contoh Sederhana) --- */
+/* Anda perlu mengganti ikon placeholder dengan gambar/SVG yang sebenarnya */
+
+.type-png {
+  background-color: #ffb3b3; /* Merah muda muda */
+}
+
+.type-txt {
+  background-color: #b3c2ff; /* Biru muda muda */
+}
+
+.type-pdf {
+  background-color: #ff9999; /* Merah muda untuk PDF */
+}
+
+.type-docx {
+  background-color: #b3c2ff; /* Biru muda untuk DOCX */
+}
+
+.type-xlsx {
+  background-color: #b3ffb3; /* Hijau muda untuk XLSX */
+}
+
+/* Mengubah warna ikon placeholder untuk jenis file tertentu */
+.type-png .icon-placeholder i {
+  color: #f95f62; /* Merah oranye */
+}
+
+.type-txt .icon-placeholder i {
+  color: #5f80f9; /* Biru */
+}
+
+.type-pdf .icon-placeholder i {
+  color: #f95f62; /* Merah */
+}
+
+.type-docx .icon-placeholder i {
+  color: #5f80f9; /* Biru */
+}
+
+.type-xlsx .icon-placeholder i {
+  color: #4caf50; /* Hijau */
+}
